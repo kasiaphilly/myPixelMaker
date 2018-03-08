@@ -1,0 +1,38 @@
+<html>
+<head>
+    <title>Pixel Art Maker!</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
+    <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+</head>
+<body>
+
+  <div class="flex-container">
+    <header>
+      <h1>Pixel Art Maker</h1>
+    </header>
+
+      <h2>Pick Canvas Color <input type="color" id="bgcolorPicker" value="#ffffff"> </h2>
+      <h2>Choose Grid Size</h2>
+      <form id="sizePicker">
+        Grid Height:
+        <input type="number" id="inputHeight" name="height" min="1" max="50" value="10">
+        Grid Width:
+        <input type="number" id="inputWidth" name="width" min="1" max="50" value="10">
+        <input class = "button" type="submit">
+      </form>
+
+      <h2>Pick Drawing Color <input type="color" id="colorPicker"> </h2>
+      <button class = "button" id="clearCanvas"> Reset canvas </button>
+      <button class="button" id="eraser"> Eraser </button>
+
+      <h2>Design Canvas</h2>
+      <table class="canvas" id="pixelCanvas"></table>
+
+
+    <footer>author: Katarzyna Elliott-Maksymowicz</footer>
+  </div>
+<script src="designs.js"></script>
+</body>
+</html>
