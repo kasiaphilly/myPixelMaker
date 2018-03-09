@@ -82,3 +82,27 @@ $('#eraser').on("click", function(e) {
     $(this).removeClass("turnedOn");
   };
   });
+
+
+// export the artwork
+$('#export').on('click', function() {
+  html2canvas($('#preview-table'), {
+    onrendered: function(canvas) {
+      const saveAs = function(uri, filename) {
+        const link = document.createElement('a');
+        if (typeof link.download === 'string') {
+          document.body.appendChild(link); // Firefox requires the link to be in the body
+          link.download = filename;
+          link.href = uri;
+          link.click();
+          document.body.removeChild(link); // remove the link when done
+          } else {
+            location.replace(uri);
+            }
+          };
+        const img = canvas.toDataURL("image/png"),
+        uri = img.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
+        saveAs(uri, 'pixelArt.png');
+        }
+    });
+});
