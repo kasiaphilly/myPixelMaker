@@ -127,12 +127,17 @@ $(document).ready(function(){
   var getCanvas; // global variable
   const btnPrev = $("#btnPrev");
   const dwnld = $("#dwnld");
+  const prev = $("#prev");
+  const prevImg = $("#previewImage");
 
  btnPrev.on('click', function () {
+   //Clear the former grid
+  prev.children().remove();
+  prevImg.children().remove();
     html2canvas(element, {
       onrendered: function (canvas) {
-        $("#prev").append("<h3>Preview :</h3>");
-        $("#previewImage").append(canvas);
+        prev.append("<h3>Preview :</h3>");
+        prevImg.append(canvas);
         getCanvas = canvas;
       }
     });
