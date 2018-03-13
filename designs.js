@@ -45,7 +45,6 @@ canvasJ.on("click", 'td', function(e) {
 });
 
 //uncolor cell on double click
-
 canvasJ.on("dblclick", 'td', function(e){
   e.preventDefault();
   const bgColor = $("#bgcolorPicker").val();
@@ -91,7 +90,35 @@ $('#eraser').on("click", function(e) {
   } else{
     $(this).removeClass("turnedOn");
   };
-  });
+});
+
+ //hide grid
+let clickCount3 = 0;
+$('#grid').on("click", function(e) {
+  e.preventDefault();
+  clickCount3 ++;
+
+  if (clickCount3%2==1) {
+      $("table, tr, td").css("border-color", "transparent");
+    } else {
+      $("table, tr, td").css("border-color", "black");
+    }
+});
+
+
+//hide grid button
+let clickCount4 = 0;
+$('#grid').on("click", function(e) {
+  e.preventDefault();
+  clickCount4 ++;
+  // change button color once "on"
+  if (clickCount4%2==1) {
+    $(this).addClass("turnedOn");
+  } else{
+    $(this).removeClass("turnedOn");
+  };
+});
+
 
 
 // PREVIEW & DOWNLOAD
