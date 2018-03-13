@@ -119,14 +119,12 @@ $('#grid').on("click", function(e) {
   };
 });
 
-
-
 // PREVIEW & DOWNLOAD
 //code source adapted from: codepedia.info
 
 $(document).ready(function(){
   const element = $("#html-content-holder"); // global variable
-  const getCanvas = null; // global variable
+  var getCanvas; // global variable
   const btnPrev = $("#btnPrev");
   const dwnld = $("#dwnld");
 
