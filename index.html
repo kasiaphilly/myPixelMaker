@@ -5,6 +5,11 @@
     <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Nova+Square" rel="stylesheet">
+  <script src="Scripts/jquer_latest_2.11_.min.js" type="text/javascript"></script>
+
+<!-- html to canvas converter from: Codepedia  -->
+  <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+
 </head>
 <body>
 
@@ -27,17 +32,26 @@
       <button class = "button" id="clearCanvas"> Reset canvas </button>
       <button class="button" id="eraser"> Eraser </button>
 
-      <h2>Design Canvas</h2>
-      <table class="canvas" id="pixelCanvas"></table>
 
-<button class="button" id="export">Export your artwork!</button><br><br>
+<h2>Design Canvas</h2>
+<div id="html-content-holder">
+   <table class="canvas" id="pixelCanvas"></table>
+</div>
 
+<input id="btnPrev" type="button" class='button' value="Preview"/>
+<a id="dwnld" class='button' href="#">Download</a>
+
+<div id="prev">
+<br>
+</div>
+<div id="previewImage">
+</div>
+<br>
     <footer>author: Katarzyna Elliott-Maksymowicz</footer>
-  </div>
+</div>
+
 <script src="designs.js">
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="tableExport.jquery.plugin/html2canvas.js"></script>
 
 </body>
 </html>

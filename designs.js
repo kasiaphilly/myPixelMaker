@@ -1,7 +1,8 @@
 // Select size input
 const height = $('#inputHeight').val();
 const width = $('#inputWidth').val();
-const canvas = document.getElementById('pixelCanvas');
+const canvasD = document.getElementById('pixelCanvas');
+const canvasJ = $('#pixelCanvas');
 
 // access the properties of "eraser" button
 const eraser = document.getElementById('eraser');
@@ -9,7 +10,7 @@ const eraser = document.getElementById('eraser');
 // When size is submitted by the user, call makeGrid()
 $('#sizePicker').on("click", function(event){
   //Clear the former grid
-  $("#pixelCanvas").children().remove();
+  canvasJ.children().remove();
   event.preventDefault();
   createGrid();
   let bgColor = $("#bgcolorPicker").val();
@@ -25,7 +26,7 @@ $('#sizePicker').on("click", function(event){
 //create Grid function
 function createGrid() {
   for (let i = 0; i<$('#inputHeight').val(); i++) {
-    const row = canvas.insertRow(i);
+    const row = canvasD.insertRow(i);
     $("tr").addClass("rowCl");
     for (let j = 0; j<$('#inputWidth').val(); j++) {
       const cell = row.insertCell(j);
@@ -36,12 +37,21 @@ function createGrid() {
 
 
 //color cell
-$('#pixelCanvas').on("click", 'td', function(e) {
+canvasJ.on("click", 'td', function(e) {
   e.preventDefault();
   // Select color input
   let color = $('#colorPicker').val();
   $(this).css("background-color", color);
 });
+
+//uncolor cell on double click
+
+canvasJ.on("dblclick", 'td', function(e){
+  e.preventDefault();
+  const bgColor = $("#bgcolorPicker").val();
+  $(this).css("background-color", bgColor);
+});
+
 
 // clear canvas
 $('#clearCanvas').on("click", function() {
@@ -56,13 +66,13 @@ $('#eraser').on("click", function(e) {
   clickCount ++;
 
   if (clickCount%2==1) {
-    $('#pixelCanvas').on("click", 'td', function(event) {
+    canvasJ.on("click", 'td', function(event) {
     event.preventDefault();
     const bgColor = $("#bgcolorPicker").val();
     $(this).css("background-color", bgColor);
     });
   } else {
-    $('#pixelCanvas').on("click", 'td', function(e) {
+    canvasJ.on("click", 'td', function(e) {
     e.preventDefault();
     let color = $('#colorPicker').val();
     $(this).css("background-color", color);
@@ -84,25 +94,28 @@ $('#eraser').on("click", function(e) {
   });
 
 
-// export the artwork
-$('#export').on('click', function() {
-  html2canvas($('#preview-table'), {
-    onrendered: function(canvas) {
-      const saveAs = function(uri, filename) {
-        const link = document.createElement('a');
-        if (typeof link.download === 'string') {
-          document.body.appendChild(link); // Firefox requires the link to be in the body
-          link.download = filename;
-          link.href = uri;
-          link.click();
-          document.body.removeChild(link); // remove the link when done
-          } else {
-            location.replace(uri);
-            }
-          };
-        const img = canvas.toDataURL("image/png"),
-        uri = img.replace(/^data:image\/[^;]/, 'data:application/octet-stream');
-        saveAs(uri, 'pixelArt.png');
-        }
+// PREVIEW & DOWNLOAD
+//code source adapted from: codepedia.info
+
+$(document).ready(function(){
+  const element = $("#html-content-holder"); // global variable
+  const getCanvas = null; // global variable
+  const btnPrev = $("#btnPrev");
+  const dwnld = $("#dwnld");
+
+ btnPrev.on('click', function () {
+    html2canvas(element, {
+      onrendered: function (canvas) {
+        $("#prev").append("<h3>Preview :</h3>");
+        $("#previewImage").append(canvas);
+        getCanvas = canvas;
+      }
     });
+  });
+
+	dwnld.on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png");
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    dwnld.attr("download", "yourPixelArt.png").attr("href", newData);
+	});
 });
