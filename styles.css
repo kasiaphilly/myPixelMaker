@@ -99,7 +99,8 @@ h2 {
 .pickerField{
   border-radius: 4px;
   border-width: 2px;
-  width: 20px;
+  width: 25px;
+  height: 25px;
 }
 
 .inputField:focus {
@@ -149,4 +150,8 @@ input[type=number] {
 .turnedOn{
   background-color: rgb(142,60,54);
   box-shadow: 0 1px #666;
+}
+
+.black{
+  background-color: black;
 }
