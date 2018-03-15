@@ -3,6 +3,7 @@ const height = $('#inputHeight').val();
 const width = $('#inputWidth').val();
 const canvasD = document.getElementById('pixelCanvas');
 const canvasJ = $('#pixelCanvas');
+const artwork = $('#artwork');
 
 // access the properties of "eraser" button
 const eraser = document.getElementById('eraser');
@@ -54,9 +55,12 @@ canvasJ.on("dblclick", 'td', function(e){
 
 // clear canvas
 $('#clearCanvas').on("click", function() {
- const bgColor = $("#bgcolorPicker").val();
- $("table, tr, td").css("background-color", bgColor);
+  if (confirm("Are you sure you want to clear your artwork?")) {
+    const bgColor = $("#bgcolorPicker").val();
+    $("table, tr, td").css("background-color", bgColor);
+  }
 });
+
 
 //eraser
 let clickCount = 0;

@@ -13,33 +13,63 @@
 </head>
 <body>
 
-  <div class="flex-container">
-    <header>
-      <h1>Pixel Art Maker</h1>
-    </header>
+  <header>
+    <h1>Pixel Art Maker</h1>
+  </header>
 
-      <h2>Pick Canvas Color <input type="color" id="bgcolorPicker" value="#ffffff"> </h2>
-      <h2>Choose Grid Size</h2>
-      <form id="sizePicker">
-        Grid Height:
-        <input type="number" id="inputHeight" name="height" min="1" max="50" value="10">
-        Grid Width:
-        <input type="number" id="inputWidth" name="width" min="1" max="50" value="10">
-        <input class = "button" type="submit">
-      </form>
+<div class="flex-container">
 
-      <h2>Pick Drawing Color <input type="color" id="colorPicker"> </h2>
-      <button class = "button" id="clearCanvas"> Reset canvas </button>
-      <button class="button" id="eraser"> Eraser </button>
-      <button class="button" id="grid"> Hide grid </button>
+ <!-- design the grid
+-->
+ <div class = "designGrid">
+   <h2>Pick Background Color
+   <input type="color" id="bgcolorPicker" class="pickerField" value="#ffffff"></h2>
 
-<h2>Design Canvas</h2>
-<div id="html-content-holder">
-   <table class="canvas" id="pixelCanvas"></table>
+   <h2>Choose Grid Size</h2>
+   <form id="sizePicker">
+      Height:
+       <input type="number" class='inputField' id="inputHeight" name="height" min="1" max="50" value="10">
+      Width:
+       <input type="number" id="inputWidth" class='inputField' name="width" min="1" max="50" value="10">
+    <br>
+    <input class = "button" type="submit" value="Create my canvas!">
+   </form>
+
+  <!-- choose brush color
+-->
+   <h2>Pick Drawing Color
+   <input type="color" id="colorPicker" class="pickerField"> </h2>
+  </div>
+
+
+  <!-- canvas
+-->
+  <div class = "artwork" id="artwork">
+
+    <div id="html-content-holder">
+
+      <table class="canvas" id="pixelCanvas">
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+      <tr><td><td><td><td><td><td><td><td><td>
+
+      </table>
+
+    </div>
+    <button class = "button" id="clearCanvas"> Clear canvas </button>
+    <button class="button" id="eraser"> Eraser </button>
+    <button class="button" id="grid"> Hide grid </button>
+    <input id="btnPrev" type="button" class='button' value="Preview"/>
+    <a id="dwnld" class='button' href="#">Download</a>
+  </div>
 </div>
-
-<input id="btnPrev" type="button" class='button' value="Preview"/>
-<a id="dwnld" class='button' href="#">Download</a>
 
 <div id="prev">
 <br>
@@ -47,11 +77,10 @@
 <div id="previewImage">
 </div>
 <br>
-    <footer>author: Katarzyna Elliott-Maksymowicz</footer>
-</div>
 
 <script src="designs.js">
 </script>
 
 </body>
+    <footer>author: Katarzyna Elliott-Maksymowicz</footer>
 </html>
