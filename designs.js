@@ -36,7 +36,6 @@ function createGrid() {
   }
 };
 
-
 //color cell
 canvasJ.on("click", 'td', function(e) {
   e.preventDefault();
@@ -103,9 +102,9 @@ $('#grid').on("click", function(e) {
   clickCount3 ++;
 
   if (clickCount3%2==1) {
-      $("table, tr, td").css("border-color", "transparent");
+      $("table, tr, td").css("border", "none");
     } else {
-      $("table, tr, td").css("border-color", "black");
+      $("table, tr, td").css("border", "1px solid black");
     }
 });
 
