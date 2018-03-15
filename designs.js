@@ -51,6 +51,14 @@ canvasJ.on("dblclick", 'td', function(e){
   $(this).css("background-color", bgColor);
 });
 
+// draw when pressing mouse down
+canvasJ.on("mousedown mouseover",'td', function(e) {
+  e.preventDefault();
+  let color = $('#colorPicker').val();
+  if (e.buttons == 1) {
+  $(this).css("background-color", color);}
+});
+
 
 // clear canvas
 $('#clearCanvas').on("click", function() {
