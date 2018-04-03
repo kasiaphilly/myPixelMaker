@@ -1,6 +1,6 @@
 // Select size input
-const height = $('#inputHeight').val();
-const width = $('#inputWidth').val();
+const height = $('#inputHeight');
+const width = $('#inputWidth');
 const canvasD = document.getElementById('pixelCanvas');
 const canvasJ = $('#pixelCanvas');
 const artwork = $('#artwork');
@@ -16,25 +16,25 @@ $('#sizePicker').on("click", function(event){
   createGrid();
   let bgColor = $("#bgcolorPicker").val();
   $("table, tr, td").css("background-color", bgColor);
-
-// calculating width and length of canvas and setting it in stylesheet so that it does not deform when we change the size of browser window
-  const tbWidth = $('#inputWidth').val()*20 +"px";
-  $("table").css("width", tbWidth);
-  const tbHeight = $('#inputHeight').val()*20 +"px";
-  $("table").css("height", tbHeight);
 });
 
 //create Grid function
 function createGrid() {
-  for (let i = 0; i<$('#inputHeight').val(); i++) {
+  for (let i = 0; i<height.val(); i++) {
     const row = canvasD.insertRow(i);
     $("tr").addClass("rowCl");
-    for (let j = 0; j<$('#inputWidth').val(); j++) {
+    for (let j = 0; j<width.val(); j++) {
       const cell = row.insertCell(j);
       $("td").addClass("cellCl");
     }
+  // calculating width and length of canvas and setting it in stylesheet so that it does not deform when we change the size of browser window
+  const tbWidth = width.val()*20 +"px";
+  $("table").css("width", tbWidth);
+  const tbHeight = height.val()*20 +"px";
+  $("table").css("height", tbHeight);
   }
 };
+
 
 //color cell
 canvasJ.on("click", 'td', function(e) {
@@ -81,7 +81,8 @@ $('#eraser').on("click", function(e) {
     const bgColor = $("#bgcolorPicker").val();
     $(this).css("background-color", bgColor);
     });
-  } else {
+  }
+  else {
     canvasJ.on("click", 'td', function(e) {
     e.preventDefault();
     let color = $('#colorPicker').val();
@@ -89,6 +90,32 @@ $('#eraser').on("click", function(e) {
     });
   }
 });
+
+// eraser on press down
+
+let clickCount0 = 0;
+$('#eraser').on("click", function(e) {
+  e.preventDefault();
+  clickCount0 ++;
+
+  if (clickCount0%2==1) {
+    canvasJ.on("mousedown mouseover",'td', function(e) {
+    e.preventDefault();
+    let bgColor = $("#bgcolorPicker").val();
+    if (e.buttons == 1) {
+      $(this).css("background-color", bgColor);}
+    });
+  }
+  else {
+    canvasJ.on("mousedown mouseover",'td', function(e) {
+    e.preventDefault();
+    let color = $('#colorPicker').val();
+      if (e.buttons == 1) {
+    $(this).css("background-color", color);}
+    });
+  }
+});
+
 
 //eraser button
 let clickCount1 = 0;
@@ -102,6 +129,7 @@ $('#eraser').on("click", function(e) {
     $(this).removeClass("turnedOn");
   };
 });
+
 
  //hide grid
 let clickCount3 = 0;
